@@ -1,5 +1,5 @@
 {
-  "name": "ts-expo-sdk-v3",
+  "name": "symbol-sdk-expo-sample",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -9,10 +9,18 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@symbol-blockchain-community/expo-symbol-crypto": "^0.0.3",
+    "assert": "^2.1.0",
+    "buffer": "^4.9.2",
+    "events": "^1.1.1",
     "expo": "~50.0.14",
     "expo-status-bar": "~1.11.1",
+    "process": "^0.11.10",
     "react": "18.2.0",
-    "react-native": "0.73.6"
+    "react-native": "0.73.6",
+    "stream-browserify": "^2.0.2",
+    "symbol-sdk": "^3.2.0",
+    "url": "^0.11.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
