@@ -3,11 +3,13 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { PrivateKey } from 'symbol-sdk';
+import { SymbolFacade } from 'symbol-sdk/src/symbol';
 
 export default function App() {
   useEffect(() => {
-    const rndom = PrivateKey.random();
-    console.log(rndom.toString());
+    console.log('秘密鍵作成', PrivateKey.random().toString());
+
+    console.log('facade 作成', new SymbolFacade('testnet'));
   }, []);
 
   return (
