@@ -2,8 +2,8 @@ import './shim';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { PrivateKey } from 'symbol-sdk';
-import { SymbolFacade, KeyPair } from 'symbol-sdk/src/symbol';
+import { PrivateKey, Bip32 } from 'symbol-sdk';
+import { SymbolFacade } from 'symbol-sdk/src/symbol';
 
 export default function App() {
   useEffect(() => {
@@ -24,6 +24,10 @@ export default function App() {
     const jsonPayload = facade.transactionFactory.static.attachSignature(transaction, signature);
 
     console.log('Signed result', jsonPayload);
+
+    const bip32 = new Bip32();
+    const mnemonic = bip32.random();
+    console.log('Your Mnemonic', mnemonic);
   }, []);
 
   return (
