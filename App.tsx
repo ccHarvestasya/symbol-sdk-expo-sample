@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { PrivateKey, Bip32 } from 'symbol-sdk';
-import { SymbolFacade } from 'symbol-sdk/src/symbol';
+import { Address, SymbolFacade } from 'symbol-sdk/src/symbol';
 
 export default function App() {
   useEffect(() => {
@@ -25,9 +25,19 @@ export default function App() {
 
     console.log('Signed result', jsonPayload);
 
-    const bip32 = new Bip32();
+    const bip32 = new Bip32(SymbolFacade.BIP32_CURVE_NAME, 'japanese');
     const mnemonic = bip32.random();
     console.log('Your Mnemonic', mnemonic);
+
+    const bip32Node = bip32.fromMnemonic(mnemonic, '');
+    const maxAccountCount = 10;
+    for (let i = 0; i < maxAccountCount; i++) {
+      const bip32Path = facade.bip32Path(i);
+      const childBip32Node = bip32Node.derivePath(bip32Path);
+      const keyPair = SymbolFacade.bip32NodeToKeyPair(childBip32Node);
+      const address = new Address(facade.network.publicKeyToAddress(keyPair.publicKey));
+      console.log(`[${i}]`, address.toString(), keyPair.privateKey.toString());
+    }
   }, []);
 
   return (
