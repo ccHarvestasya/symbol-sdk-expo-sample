@@ -3,7 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { PrivateKey, Bip32 } from 'symbol-sdk';
-import { Address, SymbolFacade } from 'symbol-sdk/src/symbol';
+import { Address, SymbolFacade } from 'symbol-sdk/symbol';
 
 export default function App() {
   useEffect(() => {
