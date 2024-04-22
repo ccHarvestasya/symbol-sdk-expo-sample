@@ -3,10 +3,17 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import sampleCode from '@/services/symbol';
+import { Configuration, NodeRoutesApi } from '@/services/NodeClientService';
 
 export default function App() {
   useEffect(() => {
+    // Run sample code
     sampleCode();
+
+    // Create Node Client Sample
+    const config = new Configuration({ basePath: 'https://node.org' });
+    const nodeClient = new NodeRoutesApi(config);
+    nodeClient.getNodeHealth().then((e) => console.log(e));
   }, []);
 
   return (
